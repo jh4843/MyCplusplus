@@ -19,7 +19,7 @@ void main()
     // basic types
     auto a = true;  // bool a = true --> explicitly type int, auto a = true --> implicitly type int
     auto b = 'A';
-    auto c = L'A';
+    auto c = "A"s;
     auto d = "¹®ÀÚ¿­";
     auto e = 3;
     auto f = 3.0;
