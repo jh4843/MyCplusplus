@@ -24,20 +24,20 @@ void main()
     auto e = 3;
     auto f = 3.0;
     
-    std::cout << "값\t크기\t자료형" << std::endl;
-    std::cout << a << '\t' << sizeof(a) << '\t' << typeid(a).name() << std::endl;
-    std::cout << b << '\t' << sizeof(b) << '\t' << typeid(b).name() << std::endl;
-    std::cout << c << '\t' << sizeof(c) << '\t' << typeid(c).name() << std::endl;
-    std::cout << d << '\t' << sizeof(d) << '\t' << typeid(d).name() << std::endl;
-    std::cout << e << '\t' << sizeof(e) << '\t' << typeid(e).name() << std::endl;
+    cout << "값\t크기\t자료형" << endl;
+    cout << a << '\t' << sizeof(a) << '\t' << typeid(a).name() << endl;
+    cout << b << '\t' << sizeof(b) << '\t' << typeid(b).name() << endl;
+    cout << c << '\t' << sizeof(c) << '\t' << typeid(c).name() << endl;
+    cout << d << '\t' << sizeof(d) << '\t' << typeid(d).name() << endl;
+    cout << e << '\t' << sizeof(e) << '\t' << typeid(e).name() << endl;
 
     // initializer_list <int>
     auto g = { 121, 13 };   
-    std::cout << f << '\t' << sizeof(f) << '\t' << typeid(f).name() << std::endl;
+    cout << f << '\t' << sizeof(f) << '\t' << typeid(f).name() << endl;
     for (auto temp : g)
         cout << " " << temp;
     cout << endl;
-    std::cout << '\t' << sizeof(g) << '\t' << typeid(g).name() << std::endl;
+    cout << '\t' << sizeof(g) << '\t' << typeid(g).name() << endl;
 
     map<string, int> mapSample;
 
@@ -47,7 +47,7 @@ void main()
 
     //map<int, string>::iterator i = mapSample.begin();
     auto i = mapSample.begin();
-    std::cout << '\t' << sizeof(i) << '\t' << typeid(i).name() << std::endl;
+    cout << '\t' << sizeof(i) << '\t' << typeid(i).name() << endl;
     for (i = mapSample.begin(); i != mapSample.end(); i++)
         cout << "key: " << i->first << ", val: " << i->second << endl;
 
@@ -71,7 +71,6 @@ void main()
 
 
     auto aa = getchar();
-
-    std::cout << aa << '\t' << sizeof(aa) << '\t' << typeid(aa).name() << std::endl;
+    cout << aa << '\t' << sizeof(aa) << '\t' << typeid(aa).name() << endl;
 }
 
