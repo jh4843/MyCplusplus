@@ -26,4 +26,5 @@ tmp/
 .DS_Store*
 /x64
 **/Debug/*
+**/Release/*
 *.ilk
