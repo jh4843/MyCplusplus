@@ -98,7 +98,7 @@ void useVector()
 
     // 6. Delete
     // #1. delete the n th item.
-    vector<int> v6, v7, v8;
+    vector<int> v6, v7, v8, v9, v10;
     v6.push_back(10);
     v6.push_back(20);
     v6.push_back(30);
@@ -115,38 +115,90 @@ void useVector()
     // #2. delete the elements that has specific value and print remain items..
     v7.push_back(10);
     v7.push_back(20);
-    v7.push_back(20);
+    v7.push_back(30);
     v7.push_back(40);
     v7.push_back(50);
-    v7.push_back(20);
     v7.push_back(60);
     v7.push_back(70);
-    v7.push_back(20);
+    v7.push_back(80);
+    v7.push_back(90);
 
     remove(v7.begin(), v7.end(), 20); // not include last element.
 
     for (auto& v : v7) {
-        cout << v << " ";           // 10 40 50 60 70 60 70 20
+        cout << v << " ";           // 10 30 40 50 60 70 80 90
     }
     cout << endl;
 
     // #3. delete the elements that has specific value.
-    v8.push_back(10);
-    v8.push_back(20);
-    v8.push_back(20);
-    v8.push_back(40);
-    v8.push_back(50);
-    v8.push_back(20);
-    v8.push_back(60);
-    v8.push_back(70);
-    v8.push_back(20);
+	v8.push_back(10);
+	v8.push_back(20);
+	v8.push_back(30);
+	v8.push_back(40);
+	v8.push_back(50);
+	v8.push_back(60);
+	v8.push_back(70);
+	v8.push_back(80);
+	v8.push_back(90);
 
     v8.erase(remove(v8.begin(), v8.end(), 20), v8.end());
 
     for (auto& v : v8) {
-        cout << v << " ";           // 10 40 50 60 70 -> because remove() return the element that is first item amoung undeleted elements..
+        cout << v << " ";           // 10 30 40 50 60 70 80 90 -> because remove() return the element that is first item amoung undeleted elements..
     }
     cout << endl;
+
+	// #4. delete the elements in loop
+	v9.push_back(10);
+	v9.push_back(20);
+	v9.push_back(30);
+	v9.push_back(40);
+	v9.push_back(50);
+	v9.push_back(60);
+	v9.push_back(70);
+	v9.push_back(80);
+	v9.push_back(90);
+
+    for (auto iter = v9.begin(); iter < v9.end(); iter++) {
+        if (*iter == 50) {
+            iter = v9.erase(iter);
+        }
+    }
+
+	for (auto i = 0; i < v9.size(); i++) {
+        if (v9[i] == 50) {
+            v9.erase(v9.begin() + i);
+        }
+	}
+
+	for (auto& v : v9) {
+		cout << v << " ";           // 10 20 30 40 60 70 80 90
+	}
+
+    cout << endl;
+
+	// #5. delete the elements in loop
+	v10.push_back(10);
+	v10.push_back(20);
+	v10.push_back(30);
+	v10.push_back(40);
+	v10.push_back(50);
+	v10.push_back(60);
+	v10.push_back(70);
+	v10.push_back(80);
+	v10.push_back(90);
+
+	for (auto i = 0; i < v10.size(); i++) {
+		if (v10[i] == 60) {
+            v10.erase(v10.begin() + i);
+		}
+	}
+
+	for (auto& v : v10) {
+		cout << v << " ";           // 10 20 30 40 50 70 80 90
+	}
+
+	cout << endl;
 
 }
 
