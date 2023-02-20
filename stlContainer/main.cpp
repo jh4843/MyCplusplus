@@ -1,9 +1,45 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
+#include <queue>
+#include <tuple>
+
 
 using namespace std;
 
+class Person
+{
+private:
+    string _name;
+    int _age;
+
+public:
+    Person(string name, int age)
+    {
+        _name = name;
+        _age = age;
+    }
+
+    string getName()
+    {
+        return _name;
+    }
+
+    int getAge()
+    {
+        return _age;
+    }
+};
+
+bool cmpReverseInt(int a, int b) {
+    return a > b;
+}
+
+bool cmpReverseTuple(tuple <int, string, int> a, tuple <int, string, int> b) {
+    return get<0>(a) > get<0>(b);
+}
+
+// [1]. Vector
 void useVector()
 {
     vector<int> v1, v2, v3, v4;
@@ -200,9 +236,102 @@ void useVector()
 
 	cout << endl;
 
+    // 6. sort
+    sort(v10.begin(), v10.end(), cmpReverseInt);
+    for (auto& v : v10) {
+        cout << v << " ";           // 10 20 30 40 50 70 80 90
+    }
+    cout << endl;
+
+    // 7. use vector with tuple
+    vector<tuple<int, string, int>> v11;
+
+    // index, name, age
+    v11.push_back(make_tuple(0, "Jin", 2));
+    v11.push_back(make_tuple(1, "Kim", 10));
+    v11.push_back(make_tuple(2, "Lee", 12));
+    v11.push_back(make_tuple(3, "David", 8));
+
+    sort(v11.begin(), v11.end(), cmpReverseTuple);
+
+    for (auto& v : v11) {
+        cout << "index: " << get<0>(v) << " name: " << get<1>(v) << " age: " << get<2>(v) << endl;
+    }
+}
+
+// [2]. Queue
+void useQueue() 
+{
+    // 1. insert with push
+    cout << "[QUEUE #1] insert with push()" << endl;
+
+    queue<Person*> q;
+    q.push(new Person("John", 5));
+    q.push(new Person("Lee", 3));
+    q.push(new Person("Kim", 11));
+    q.push(new Person("Choi", 9));
+
+    while (!q.empty())
+    {
+        Person* pPerson = q.front();    // get first item.
+        cout << "name: " << pPerson->getName() << " age: " << pPerson->getAge() << endl;
+        q.pop();    // remove the first item.
+    }
+
+    // 2. insert with emplace
+    cout << "[QUEUE #2] insert with emplace()" << endl;
+
+    q.emplace(new Person("John", 5));
+    q.emplace(new Person("Lee", 3));
+    q.emplace(new Person("Kim", 11));
+    q.emplace(new Person("Choi", 9));
+
+    while (!q.empty())
+    {
+        Person* pPerson = q.front();    // get first item.
+        cout << "name: " << pPerson->getName() << " age: " << pPerson->getAge() << endl;
+        q.pop();    // remove the first item.
+    }
+
+    // 3. swap
+    cout << "[QUEUE #3] swap items" << endl;
+
+    queue<Person*> q2;
+
+    q.push(new Person("John", 5));
+    q.push(new Person("Lee", 3));
+    q.push(new Person("Kim", 11));
+    q.push(new Person("Choi", 9));
+
+    q2.push(new Person("a", 1));
+    q2.push(new Person("b", 2));
+    q2.push(new Person("c", 3));
+    q2.push(new Person("d", 4));
+
+    // Swap q and q2
+    q.swap(q2);
+
+    cout << "q items" << endl;
+    while (!q.empty())
+    {
+        Person* pPerson = q.front();    // get first item.
+        cout << "name: " << pPerson->getName() << " age: " << pPerson->getAge() << endl;
+        q.pop();    // remove the first item.
+    }
+
+    cout << "q2 items" << endl;
+    while (!q2.empty())
+    {
+        Person* pPerson = q2.front();    // get first item.
+        cout << "name: " << pPerson->getName() << " age: " << pPerson->getAge() << endl;
+        q2.pop();    // remove the first item.
+    }
+
+    return;
 }
 
 void main()
 {
 	useVector();
+    useQueue();
 }
