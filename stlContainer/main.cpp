@@ -257,6 +257,19 @@ void useVector()
     for (auto& v : v11) {
         cout << "index: " << get<0>(v) << " name: " << get<1>(v) << " age: " << get<2>(v) << endl;
     }
+
+    // 8. 2 dimensional vector
+    // initialize
+    vector<vector<int>> v22(10, vector<int>(10, 5));
+    cout << "v22: " << v22[5][5] << endl;
+
+	for (auto& vii : v22) {
+        for (auto& v : vii) {
+            cout << v << " ";
+        }
+        cout << endl;
+	}
+
 }
 
 // [2]. Queue
