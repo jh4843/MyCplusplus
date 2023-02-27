@@ -3,7 +3,8 @@
 #include <vector>
 #include <queue>
 #include <tuple>
-
+#include <stack>
+#include <map>
 
 using namespace std;
 
@@ -342,8 +343,59 @@ void useQueue()
     return;
 }
 
+// [3]. Stack
+void useStack() {
+
+    // 1. normal
+    cout << "[Stack #1] Push() & Pop()" << endl;
+    stack<int> s;
+
+    s.push(1);     // stack에 값 1 추가
+    s.push(2);     // stack에 값 2 추가
+    s.push(3);     // stack에 값 3 추가
+
+    while (!s.empty()) // empty : 요소가 없으면 true, 있으면 false
+    {
+        cout << s.top() << ' '; // top은 맨 위에 있는 요소를 반환한다.
+        s.pop(); // 삭제
+    }
+}
+
+// [4]. Map
+void useMap() {
+
+    // 1. normal
+    cout << "[Map #1] insert() & use" << endl;
+
+    // <key, value>
+    map<string, int> m;
+    m.insert({ "Kim", 12 });
+    m.insert({ "Jin", 31 });
+    m.insert({ "Lee", 41 });
+
+    for (const auto& [k, v] : m) {
+        cout << "key: " << k << " value: " << v << endl;
+    }
+
+    m.erase("Jin");
+
+    for (auto& item : m) {
+        cout << item.first << " " << item.second << endl;
+    }
+
+    m.insert({ "Kong", 55 });
+    m.erase(m.begin(), m.end());
+
+    for (auto& item : m) {
+        cout << item.first << " " << item.second << endl;
+    }
+
+}
+
 void main()
 {
 	useVector();
     useQueue();
+    useStack();
+    useMap();
 }
