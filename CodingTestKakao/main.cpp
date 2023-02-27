@@ -429,46 +429,125 @@ public:
 int solution_4(vector<vector<int>> board) {
     int answer = 0;
 
-    myRobotPos start(1, 1, 1, 2);
+    return answer;
+}
+#pragma endregion
 
-    queue<pair<myRobotPos, int>> q;
 
-    q.emplace(start, 0);
 
-    vector<vector<bool>> visited(n, vector<bool>(m, false));
+const int NUM = 27;
 
-    while (!q.empty())
+int toNumber(char n) {
+    if (n == '?')
     {
-        const myPoint cur = q.front().first;
-        const int i = cur.i;
-        const int j = cur.j;
-        const int distCur = q.front().second;
-        q.pop();
+        return 26;
+    }
 
-        if (cur == end)
+    return n - 'a';
+}
+
+struct TrieNode
+{
+    TrieNode* children[NUM];
+    bool terminal;
+    int cnt;
+
+    TrieNode() :terminal(false), cnt(0)
+    {
+        for (int i = 0; i < NUM; ++i)
         {
-            return distCur;
+            children[i] = NULL;
         }
+    }
 
-        if (!visited[i][j])
+    ~TrieNode()
+    {
+        for (int i = 0; i < NUM; i++)
         {
-            visited[i][j] = true;
-            for (const auto& o : offset)
+            if (children[i])
             {
-                const int ii = i + o.i;
-                const int jj = j + o.j;
-
-                if (ii >= 0 && ii < n && jj >= 0 && jj < m && maps[ii][jj] != 'X')
-                {
-                    q.emplace(make_pair(myPoint(ii, jj), distCur + 1));
-                }
+                delete children[i];
             }
         }
     }
 
+    void insert(const char* key)
+    {
+        //키값이 널이라면
+        if (*key == 0)
+        {
+            terminal = true;
+        }
+        else
+        {
+            int next = toNumber(*key);
+            if (children[next] == NULL)
+            {
+                children[next] = new TrieNode();
+            }
+
+            children[next]->insert(key + 1);
+        }
+    }
+
+    void find(const char* key)
+    {
+        if (*key == 0)
+        {
+            cnt++;
+            return;
+        }
+
+        int next = toNumber(*key);
+        if (children[toNumber('?')] != NULL)
+        {
+            children[toNumber('?')]->find(key + 1);
+        }
+
+        if (children[next] != NULL)
+        {
+            children[next]->find(key + 1);
+        }
+    }
+
+    int getCnt(const char* key)
+    {
+        if (*key == 0)
+        {
+            return cnt;
+        }
+
+        int next = toNumber(*key);
+        if (children[next] == NULL)
+        {
+            return 0;
+        }
+
+        return children[next]->getCnt(key + 1);
+    }
+};
+
+vector<int> solution_5(vector<string> words, vector<string> queries) {
+    vector<int> answer;
+    TrieNode trie;
+
+    for (int i = 0; i < queries.size(); ++i)
+    {
+        trie.insert(queries[i].c_str());
+    }
+
+    for (int i = 0; i < words.size(); ++i)
+    {
+        trie.find(words[i].c_str());
+    }
+
+    for (int i = 0; i < queries.size(); ++i)
+    {
+        answer.push_back(trie.getCnt(queries[i].c_str()));
+    }
+
     return answer;
 }
-#pragma endregion
 
 int main()
 {
@@ -502,8 +581,18 @@ int main()
     //int res = solution_3(key, lock);
     //cout << "result: " << res << endl;
 
-    vector<vector<int>> board = { {0, 0, 0, 1, 1}, {0, 0, 0, 1, 0}, {0, 1, 0, 1, 1}, {1, 1, 0, 0, 1}, {0, 0, 0, 0, 0} };
-    int res = solution_4(board);
-    cout << "result: " << res << endl;
+    // 로봇 무빙
+    //vector<vector<int>> board = { {0, 0, 0, 1, 1}, {0, 0, 0, 1, 0}, {0, 1, 0, 1, 1}, {1, 1, 0, 0, 1}, {0, 0, 0, 0, 0} };
+    //int res = solution_4(board);
+    //cout << "result: " << res << endl;
+
+    //
+    vector<string> words = { "frodo", "front", "frost", "frozen", "frame", "kakao" };
+    vector<string> queries = { "fro??", "????o", "fr???", "fro???", "pro?" };
+    vector<int> res3 = solution_5(words, queries);
+
+    for (auto& a : res3) {
+        std::cout << "result4: " << a << endl;
+    }
 }
 
