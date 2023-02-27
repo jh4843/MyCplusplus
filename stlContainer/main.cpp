@@ -269,7 +269,6 @@ void useVector()
         }
         cout << endl;
 	}
-
 }
 
 // [2]. Queue
