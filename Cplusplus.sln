@@ -23,7 +23,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodingTestKakao", "CodingTe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodingTestFloyd", "CodingTestFloyd\CodingTestFloyd.vcxproj", "{5DD7A146-B57C-4DCA-9B1D-C9034B8D6990}"
 EndProject
+<<<<<<< Updated upstream
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodingTestBFS", "CodingTestBFS\CodingTestBFS.vcxproj", "{04B265C8-D979-47ED-9CF7-63175DBB29E3}"
+=======
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetworkIocpServer", "NetworkIocpServer\NetworkIocpServer.vcxproj", "{3372613E-790C-41C8-AB47-3087DACC119E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetworkIocpClient", "NetworkIocpClient\NetworkIocpClient.vcxproj", "{C64E9814-D74A-4FEF-9092-5CAB96F707E5}"
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +121,7 @@ Global
 		{5DD7A146-B57C-4DCA-9B1D-C9034B8D6990}.Release|x64.Build.0 = Release|x64
 		{5DD7A146-B57C-4DCA-9B1D-C9034B8D6990}.Release|x86.ActiveCfg = Release|Win32
 		{5DD7A146-B57C-4DCA-9B1D-C9034B8D6990}.Release|x86.Build.0 = Release|Win32
+<<<<<<< Updated upstream
 		{04B265C8-D979-47ED-9CF7-63175DBB29E3}.Debug|x64.ActiveCfg = Debug|x64
 		{04B265C8-D979-47ED-9CF7-63175DBB29E3}.Debug|x64.Build.0 = Debug|x64
 		{04B265C8-D979-47ED-9CF7-63175DBB29E3}.Debug|x86.ActiveCfg = Debug|Win32
@@ -121,6 +130,32 @@ Global
 		{04B265C8-D979-47ED-9CF7-63175DBB29E3}.Release|x64.Build.0 = Release|x64
 		{04B265C8-D979-47ED-9CF7-63175DBB29E3}.Release|x86.ActiveCfg = Release|Win32
 		{04B265C8-D979-47ED-9CF7-63175DBB29E3}.Release|x86.Build.0 = Release|Win32
+=======
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Debug|x64.ActiveCfg = Debug|x64
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Debug|x64.Build.0 = Debug|x64
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Debug|x86.ActiveCfg = Debug|Win32
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Debug|x86.Build.0 = Debug|Win32
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Release|x64.ActiveCfg = Release|x64
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Release|x64.Build.0 = Release|x64
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Release|x86.ActiveCfg = Release|Win32
+		{B2DA56A9-55D1-4CAA-84C1-4A68127F6038}.Release|x86.Build.0 = Release|Win32
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Debug|x64.ActiveCfg = Debug|x64
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Debug|x64.Build.0 = Debug|x64
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Debug|x86.ActiveCfg = Debug|Win32
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Debug|x86.Build.0 = Debug|Win32
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Release|x64.ActiveCfg = Release|x64
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Release|x64.Build.0 = Release|x64
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Release|x86.ActiveCfg = Release|Win32
+		{3372613E-790C-41C8-AB47-3087DACC119E}.Release|x86.Build.0 = Release|Win32
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Debug|x64.ActiveCfg = Debug|x64
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Debug|x64.Build.0 = Debug|x64
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Debug|x86.ActiveCfg = Debug|Win32
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Debug|x86.Build.0 = Debug|Win32
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Release|x64.ActiveCfg = Release|x64
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Release|x64.Build.0 = Release|x64
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Release|x86.ActiveCfg = Release|Win32
+		{C64E9814-D74A-4FEF-9092-5CAB96F707E5}.Release|x86.Build.0 = Release|Win32
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
