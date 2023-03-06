@@ -133,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMyIoCompletionPort.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="server.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
