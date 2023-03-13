@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 #include <process.h>
+#include <string>
+#include <ws2tcpip.h>
 
 unsigned int WINAPI CallWorkerThread(LPVOID p)
 {
@@ -110,6 +112,11 @@ void CMyIoCompletionPort::StartServer()
 			m_listenSocket, (struct sockaddr*)&clientAddr, &addrLen, NULL, NULL
 		);
 
+		char strPtr[INET_ADDRSTRLEN];
+
+		inet_ntop(AF_INET, &(clientAddr.sin_addr), strPtr, INET_ADDRSTRLEN);
+		printf_s("[INFO] Accept ID:%s Port:%hu\n", strPtr, clientAddr.sin_port);
+			
 		if (clientSocket == INVALID_SOCKET)
 		{
 			printf_s("[ERROR] Accept 실패\n");
@@ -125,7 +132,7 @@ void CMyIoCompletionPort::StartServer()
 		flags = 0;
 
 		m_hIOCP = CreateIoCompletionPort(
-			(HANDLE)clientSocket, m_hIOCP, (DWORD)m_pSocketInfo, 0
+			(HANDLE)clientSocket, m_hIOCP, (ULONG_PTR)m_pSocketInfo, 0
 		);
 
 		// 중첩 소켓을 지정하고 완료시 실행될 함수를 넘겨줌
@@ -166,6 +173,9 @@ bool CMyIoCompletionPort::CreateWorkerThread()
 		m_pWorkerHandle[i] = (HANDLE*)_beginthreadex(
 			NULL, 0, &CallWorkerThread, this, CREATE_SUSPENDED, &threadId
 		);
+
+		printf_s("[INFO] RUN Thread index: %d id: %d\n", i, threadId);
+
 		if (m_pWorkerHandle[i] == NULL)
 		{
 			printf_s("[ERROR] Worker Thread 생성 실패\n");
@@ -199,6 +209,9 @@ void CMyIoCompletionPort::WorkerThread()
 		 * 완료된 Overlapped I/O 작업이 발생하면 IOCP Queue 에서 완료된 작업을 가져와
 		 * 뒷처리를 함
 		 */
+
+		printf_s("[INFO] Get Queued Completion Status\n");
+
 		bResult = GetQueuedCompletionStatus(m_hIOCP,
 			&recvBytes,				// 실제로 전송된 바이트
 			(PULONG_PTR)&pCompletionKey,	// completion key
@@ -208,7 +221,7 @@ void CMyIoCompletionPort::WorkerThread()
 
 		if (!bResult && recvBytes == 0)
 		{
-			printf_s("[INFO] socket(%d) 접속 끊김\n", pSocketInfo->socket);
+			printf_s("[INFO] socket(%I64d\) 접속 끊김\n", pSocketInfo->socket);
 			closesocket(pSocketInfo->socket);
 			free(pSocketInfo);
 			continue;

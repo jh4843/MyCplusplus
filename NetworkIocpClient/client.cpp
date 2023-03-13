@@ -10,7 +10,7 @@
 using namespace std;
 
 #define	MAX_BUFFER		1024
-#define SERVER_PORT		8000
+#define SERVER_PORT		50001
 #define SERVER_IP		"127.0.0.1"
 
 struct stSOCKETINFO
